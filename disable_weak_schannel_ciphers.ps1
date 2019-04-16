@@ -62,7 +62,7 @@ switch ($action1.ToLower()) {
         
         $counter = 0
 
-        if(!(Test-RegistryValue -Path "$parentpath" -Name "InhouseITVersion" -Value "$scriptversion")){Write-Host "version mismatch";$counter++}
+        if(!(Test-RegistryValue -Path "$parentpath" -Name "scriptversion" -Value "$scriptversion")){Write-Host "version mismatch";$counter++}
         
         foreach ($path in $regkey_cipher_array){
         
@@ -106,7 +106,7 @@ switch ($action1.ToLower()) {
 
         New-ItemProperty -path $key_schannel_dotnet -name 'SchUseStrongCrypto' -value "1" -PropertyType 'Dword' -Force  | Out-Null
 
-        New-ItemProperty -path $parentpath -name 'InhouseITVersion' -value $scriptversion -PropertyType 'String' -Force  | Out-Null
+        New-ItemProperty -path $parentpath -name 'scriptversion' -value $scriptversion -PropertyType 'String' -Force  | Out-Null
 
 
         Write-Host 200
